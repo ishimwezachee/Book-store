@@ -7,7 +7,7 @@ const clickHandler = () => {
 
 const Book = () => (
   <div className="books">
-    <h1>Books components</h1>
+    <h1>List of Books</h1>
     <Button click={clickHandler} value="Remove Book" />
   </div>
 );
