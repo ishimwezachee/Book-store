@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/books';
 
-const Button = ({ value, click }) => (
-  <button type="button" className="btn" onClick={click}>
-    {value}
-  </button>
-);
+const Button = (props) => {
+  const dispatch = useDispatch();
 
-Button.propTypes = {
-  value: PropTypes.string,
-  click: PropTypes.func,
+  const bookToRemove = (e) => {
+    const smbook = {
+      id: e.target.id,
+    };
 
-};
-
-Button.defaultProps = {
-  value: '',
-  click: () => '',
-
+    dispatch(removeBook(smbook));
+  };
+  const id = props;
+  return (
+    <button type="button" onClick={bookToRemove} id={id.id}>
+      Remove Book
+    </button>
+  );
 };
 
 export default Button;

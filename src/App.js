@@ -2,14 +2,14 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
 import Categories from './redux/categories/categories';
-import Books from './components/BookContainer';
+import BookList from './components/bookList';
 import './App.css';
 
 const App = () => (
   <>
     <Navbar />
     <Routes>
-      <Route exact path="/" element={<Books />} />
+      <Route exact path="/" element={<BookList />} />
       <Route path="/categories" element={<Categories />} />
     </Routes>
   </>
