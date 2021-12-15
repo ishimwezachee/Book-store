@@ -1,18 +1,18 @@
 import Button from './button';
 
 const Book = (props) => {
-  const hihihi = props;
+  const book = props;
   return (
     <div className="book">
       <div className="title">
         <article>
           <p>Action</p>
-          <h2>{hihihi.title}</h2>
+          <h2>{book.title}</h2>
           <p>Author</p>
           <ul>
             <li>Comments</li>
             <li>
-              <Button id={hihihi.id} />
+              <Button id={book.id} />
             </li>
             <li>Edit</li>
           </ul>

@@ -12,6 +12,8 @@ export const removeBook = (payload) => ({
   payload,
 });
 
+// post action creator
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
