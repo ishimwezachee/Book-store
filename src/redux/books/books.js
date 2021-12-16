@@ -22,7 +22,7 @@ export const getBook = (payload) => ({
 
 // Add book to API
 export const addBookToApi = (payload) => async (dispatch) => {
-  await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/DPo4nlYS7MkRGLDUZ9ls/books', {
+  await fetch(url, {
     method: 'POST',
     body: JSON.stringify(payload),
     headers: { 'Content-Type': 'application/json' },
@@ -45,7 +45,7 @@ export const removeBookFromApi = (payload) => async (dispatch) => {
 
 // get book from API
 export const getBookFromApi = () => async (dispatch) => {
-  const request = await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/DPo4nlYS7MkRGLDUZ9ls/books');
+  const request = await fetch(url);
   const response = await request.json();
   dispatch(getBook(response));
 };
