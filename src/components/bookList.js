@@ -1,16 +1,24 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Form from './Form';
 import Book from './book';
+import { getBookFromApi } from '../redux/books/books';
 
 const Books = () => {
-  const numCakes = useSelector((state) => state.booksReducer);
+  const dispatch = useDispatch();
+  const books = useSelector((state) => state.booksReducer);
+  console.log(books);
+  useEffect(() => {
+    dispatch(getBookFromApi());
+  }, []);
   return (
     <div>
-      {numCakes.map((task) => (
+      {books.map((book) => (
         <Book
-          id={task.id}
-          key={task.id}
-          title={task.title}
+          id={book.item_id}
+          key={book.item_id}
+          title={book.title}
+          category={book.category}
         />
       ))}
       <Form />
