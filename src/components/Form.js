@@ -9,7 +9,8 @@ const AddBooks = () => {
 
   const dispatch = useDispatch();
 
-  const submitBookToStore = () => {
+  const submitBookToStore = (event) => {
+    event.preventDefault();
     const newBook = {
       item_id: uuidv4(),
       title: value,
@@ -17,22 +18,26 @@ const AddBooks = () => {
     };
 
     dispatch(addBookToApi(newBook));
+    setValue('');
+    setCategory('');
   };
   const categoryHandler = (e) => {
     setCategory(e.target.value);
   };
+  const valueHandler = (e) => {
+    setValue(e.target.value);
+  };
   return (
-    <form>
-      <input value={value} onChange={(e) => setValue(e.target.value)} placeholder="ADD NEW BOOK" />
-      <select name="books" id="book" value={categoryValue} onChange={categoryHandler}>
-        <option>Category</option>
+    <form onSubmit={submitBookToStore}>
+      <input value={value} onChange={valueHandler} placeholder="ADD NEW BOOK" required />
+      <select name="books" id="book" value={categoryValue} onChange={categoryHandler} required>
         <option value="">Select</option>
         <option value="Action">Action</option>
         <option value="Science fiction">Science fiction</option>
         <option value="Economy">Economy</option>
         <option value="Computer Science">Computer Science</option>
       </select>
-      <input type="button" value="Add Book" onClick={submitBookToStore} />
+      <input type="submit" value="Add Book" />
     </form>
   );
 };
